@@ -1,0 +1,202 @@
+<div id=D__ID>
+    <div id=panel__ID>
+        <button id=refresh__ID type=button class="btn btn-secondary"  style='float:left; margin-top:10px;margin-left:20px' >Refresh</button>
+        <br><span id=info__ID style='margin-left:100px'></span>
+        <div id=dirgram__ID>
+            <!--Vm Include:__CURRENT_PATH__server_status.svg-->
+        </div>
+    </div>
+    <style>
+        #dirgram__ID g[vm="1"]:hover text{
+            fill:red!Important;
+            cursor:pointer;
+        }
+        #dirgram__ID{
+            min-width:1000px;
+            padding:50px 400px;
+        }
+        @media screen and (max-width: 1200px) {
+            #dirgram__ID{
+                padding:10px 10px;
+            }
+        }
+    </style>
+    <script>
+        function F__ID(){
+            //--------------------------------------------------------
+            var m=$vm.module_list['__MODULE__'];
+            var p=m.prefix; if(p==undefined) p="";
+            //--------------------------------------------------------
+            $('#D__ID').on('load',function(){
+                $vm.request({cmd:'file3',folder:'diagrams',filename:'printer-toner.svg',encoding:'utf8'},function(res){
+                    if(res.result=='403') $('#dirgram__ID').html("No permissions.");
+                    else $('#dirgram__ID').html(res.result);
+                    $('#dirgram__ID svg').removeAttr("content");
+                    $('#dirgram__ID svg').removeAttr("width");
+                    $('#dirgram__ID svg').removeAttr("height");
+
+                    $('#dirgram__ID g text').each(function(e){
+                        var t=$(this).text();
+                        if(t.substring(0,2)=="LL"){
+                            $(this).text('');
+                            $(this).attr("pid",t);
+                        }
+                    })
+                    get_info();
+                })
+            })
+            //--------------------------------------------------------
+            $('#panel__ID').css('min-height',$vm.min_height);
+            //-------------------------------------------------------------------------------------------------------
+            var get_info=function(){
+                $vm.request({api:"wimr",cmd:'printer',ip:2},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL21B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL21C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL21M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL21Y]').text("Y: "+res.result.p06); 
+                });
+                $vm.request({api:"wimr",cmd:'printer',ip:6},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL22B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL22C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL22M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL22Y]').text("Y: "+res.result.p06); 
+                });
+                $vm.request({api:"wimr",cmd:'printer',ip:1},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL23B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL23C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL23M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL23Y]').text("Y: "+res.result.p06); 
+                });
+                $vm.request({api:"wimr",cmd:'printer',ip:13},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL24B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL24C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL24M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL24Y]').text("Y: "+res.result.p06); 
+                });
+                $vm.request({api:"wimr",cmd:'printer',ip:11},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL25B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL25C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL25M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL25Y]').text("Y: "+res.result.p06); 
+                });
+                
+                $vm.request({api:"wimr",cmd:'printer',ip:4},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL31B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL31C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL31M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL31Y]').text("Y: "+res.result.p06); 
+                });
+                $vm.request({api:"wimr",cmd:'printer',ip:10},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL32B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL32C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL32M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL32Y]').text("Y: "+res.result.p06); 
+                });
+                
+                $vm.request({api:"wimr",cmd:'printer',ip:8},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL41B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL41C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL41M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL41Y]').text("Y: "+res.result.p06); 
+                });
+                $vm.request({api:"wimr",cmd:'printer',ip:9},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL42B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL42C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL42M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL42Y]').text("Y: "+res.result.p06); 
+                });
+                $vm.request({api:"wimr",cmd:'printer',ip:3},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL43B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL43C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL43M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL43Y]').text("Y: "+res.result.p06); 
+                });
+
+                $vm.request({api:"wimr",cmd:'printer',ip:5},function(res){
+                    if(res.status=="np"){
+                        res.result.p03="No permission."
+                        res.result.p04="No permission."
+                        res.result.p05="No permission."
+                        res.result.p06="No permission."
+                    }
+                    $('#dirgram__ID g text[pid=LL61B]').text("B: "+res.result.p03);
+                    $('#dirgram__ID g text[pid=LL61C]').text("C: "+res.result.p04); 
+                    $('#dirgram__ID g text[pid=LL61M]').text("M: "+res.result.p05); 
+                    $('#dirgram__ID g text[pid=LL61Y]').text("Y: "+res.result.p06); 
+                });
+
+            }
+            //-------------------------------------------------------------------------------------------------------
+            $('#refresh__ID').on('click',function(){
+                get_info();
+            })
+            //-------------------------------------------------------------------------------------------------------
+        }
+    </script>
+    <style>
+        #D__ID{
+            height:100%;
+            background-color: #fff;
+        }
+    </style>
+</div>
