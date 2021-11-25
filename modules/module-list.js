@@ -5,4 +5,5 @@
     var m=$vm.module_list;
     var api="wimr";
     //-------------------------------------------------------------------------------------
+    m[p+"printer-details"]     ={url:H+"/business/pronter-details/page.html",prefix:p,router:1};
 })();
